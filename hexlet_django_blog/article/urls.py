@@ -1,11 +1,10 @@
 from django.urls import path
-
-from hexlet_django_blog.article.views import IndexView
+from .views import IndexView
 
 urlpatterns = [
     path(
-        'articles/tags/<str:tags>/<int:article_id>/',
+        'articles/',
         IndexView.as_view(),
-        name='article'
+        name='articles'
     ),
 ]

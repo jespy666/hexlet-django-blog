@@ -15,17 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include, reverse
-from hexlet_django_blog.views import AboutView
-from django.shortcuts import redirect
+from django.urls import path, include
+from hexlet_django_blog.views import AboutView, IndexView
 
 
 urlpatterns = [
-    path('', lambda request: redirect(reverse(
-        'article',
-        args=['python', 42])),
-         name='home'
-         ),
+    path('', IndexView.as_view(), name='home'),
     path('about/', AboutView.as_view(), name='about'),
     path('articles/', include('hexlet_django_blog.article.urls')),
     path('admin/', admin.site.urls),
